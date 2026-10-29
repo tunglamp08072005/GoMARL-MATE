@@ -1,0 +1,52 @@
+# --- QMIX specific parameters ---
+
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 100000
+
+# 🔥 FIXED FOR STABILITY
+runner: "parallel"
+run: "interval_run"
+
+buffer_size: 200
+batch_size_run: 4
+batch_size: 32
+
+optimizer: "adam"
+use_cuda: True
+gpu_id: 0
+
+t_max: 10050000
+target_update_interval: 500
+
+mac: "group_mac"
+agent: "n_group"
+agent_output_type: q
+
+learner: "group_learner"
+mixer: "group"
+
+mixing_embed_dim: 32
+hypernet_embed: 32
+grouping_hypernet_embed: 32
+
+lr: 0.001
+td_lambda: 0.6
+
+group: null
+
+change_group_interval: 100000
+change_group_batch_num: 4
+change_group_batch_size: 128
+change_group_value: 0.7
+
+lasso_alpha_anneal_time: 100000
+lasso_alpha_start: 0.005
+lasso_alpha_anneal: 0.96
+sd_alpha: 0.005
+
+# 🔥 IMPORTANT FIX
+buffer_cpu_only: True
+
+name: "group_env=8_adam_td_lambda"
